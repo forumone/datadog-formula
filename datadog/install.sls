@@ -20,7 +20,7 @@ datadog-repo:
       - pkg: datadog-apt-https
     {% elif grains['os_family'].lower() == 'redhat' %}
     - name: datadog
-    - baseurl: https://yum.datadoghq.com/rpm/{{ grains['cpuarch'] }}
+    - baseurl: https://yum.datadoghq.com/stable/6/{{ grains['cpuarch'] }}
     - gpgcheck: '1'
     - gpgkey: https://yum.datadoghq.com/DATADOG_RPM_KEY.public
     - sslverify: '1'
