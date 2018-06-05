@@ -4,9 +4,9 @@
 
 datadog-example:
   cmd.run:
-    - name: cp /etc/dd-agent/datadog.conf.example {{ datadog.config }}
+    - name: cp /etc/datadog-agent/datadog.yaml.example {{ datadog.config }}
     # copy just if datadog.conf does not exists yet and the .example exists
-    - onlyif: test ! -f {{ datadog.config }} -a -f /etc/dd-agent/datadog.conf.example
+    - onlyif: test ! -f {{ datadog.config }} -a -f /etc/datadog-agent/datadog.yaml.example
     - require:
       - pkg: datadog-pkg
 
