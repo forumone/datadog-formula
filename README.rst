@@ -46,14 +46,22 @@ Development
 ===========
 
 To ease the development of the formula, you can use Docker and Docker Compose with
-the compose file in `test/docker-compose.yaml`:
+the compose file in `test/docker-compose.yaml`.
 
-.. code-block::
+First, build and run a Docker container to create a masterless SaltStack minion. You have the option of choosing either
+a Debian- or Redhat-based minion. Then, get a shell running in the container.
 
-    # cd test/
-    # docker-compose run masterless /bin/bash
+.. code-block:: shell
+
+    $ cd test/
+    $ TEST_DIST=debian docker-compose run masterless /bin/bash
+
+Once you've built the container and have a shell up and running, you need to apply the SaltStack state on your minion:
+
+.. code-block:: shell
+
+    $ # On your SaltStack minion
     $ salt-call --local state.highstate -l debug
-
 
 Testing
 =========
@@ -71,9 +79,9 @@ Requirements
 Run the formula
 ---------------
 
-.. code-block::
+.. code-block:: shell
 
-    # cd test/
-    # docker-compose up
+    $ cd test/
+    $ TEST_DIST=debian docker-compose up
 
 You should be able to see from the logs if all the states completed successfully.
