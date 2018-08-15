@@ -25,6 +25,7 @@
     {%- set latest_agent_version = true %}
 {%- else %}
     {%- set latest_agent_version = false %}
+    {%- set parsed_version = datadog_settings.agent_version %}
 {%- endif %}
 
 {# Determine defaults depending on specified version #}
