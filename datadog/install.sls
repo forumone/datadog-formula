@@ -45,16 +45,9 @@ datadog-repo:
     {% endif %}
 
 datadog-pkg:
-  pkg.installed:
+  pkg.latest:
     - name: {{ datadog_settings.pkg_name }}
-    {%- if latest_agent_version %}
-    - version: '6.4.2'
-    {%- elif grains['os_family'].lower() == 'debian' %}
-    - version: 1:{{ datadog_settings.agent_version }}-1
-    {%- elif grains['os_family'].lower() == 'redhat' %}
-    - version: {{ datadog_settings.agent_version }}-1
-    {%- endif %}
-    - ignore_epoch: True
     - refresh: True
     - require:
       - pkgrepo: datadog-repo
+
