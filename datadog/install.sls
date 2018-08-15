@@ -35,7 +35,7 @@ datadog-repo:
         {%- elif latest_agent_version or parsed_version[1] == '6' %}
             {% set path = 'stable/6' %}
         {%- else %}
-            {% set path = 'rpm' %}
+            {% set path = 'stable/6' %}
         {%- endif %}
     - name: datadog
     - baseurl: https://yum.datadoghq.com/{{ path }}/{{ grains['cpuarch'] }}
